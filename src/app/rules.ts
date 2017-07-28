@@ -5,13 +5,21 @@ import {
     EntityDetailsComponent, ShowLineComponent,
     ListingTableComponent
 } from 'angularm';
+import { CustomListingTableComponent } from "app/widgets/CustomListingTableComponent";
+import { CustomEntityLineComponent } from "app/widgets/Custom EntityLineComponent";
 
 export let defineRules = (angularm: AngularmService) => {
     angularm
         .ptr('form_line', '*', 'code', null, FormLineComponent, { inputType: 'number' })
         .dptr('form_line', FormLineComponent, { inputType: 'text' })
         .dpr('show_line', ShowLineComponent)
+        .etr('list_entities', 'testcase',CustomListingTableComponent)
+        .etr('list_entities', 'quiz',CustomListingTableComponent)
+        .etr('list_entities', 'course',CustomListingTableComponent)
         .detr('list_entities', ListingTableComponent)
+        .er('table_line', 'testcase',CustomEntityLineComponent)
+        .er('table_line', 'quiz',CustomEntityLineComponent)
+        .er('table_line', 'course',CustomEntityLineComponent)
         .der('table_line', EntityLineComponent)
         .der('show_entity', EntityDetailsComponent)
         .detr('create_form', CreateEntityComponent)
